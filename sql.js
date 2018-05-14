@@ -48,15 +48,15 @@ function resolveCondition(predicate, condition, value1, value2) {
 
         case "in list":
             all = value1
-                .split(",")
+                .split(/\s*,\s*/g)
                 .map(item => `'${item}'`)
                 .join(",");
             return `${col} IN (${all})`;
 
         case "not in list":
             all = value1
-                .split(",")
-                .map(item => `'${item}'`)
+                .split(/\s*,\s*/g)
+                .map(item => `'${item.trim}'`)
                 .join(",");
             return `${col} NOT IN (${all})`;
 
