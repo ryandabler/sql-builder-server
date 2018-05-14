@@ -62,7 +62,7 @@ function resolveCondition(predicate, condition, value1, value2) {
 
         case "contains all":
             return `(${value1
-                .split(",")
+                .split(/\s*,\s*/g)
                 .map(item =>
                     resolveCondition(predicate, "contains", item, value2)
                 )
